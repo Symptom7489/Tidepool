@@ -94,7 +94,7 @@ class MiniOverlay(tk.Toplevel):
         self._hint.bind("<Button-1>", lambda _: self._on_expand())
 
         for widget in (self._container, self._glucose_lbl, self._arrow_lbl):
-            widget.bind("<Button-1>", self._on_click)
+            widget.bind("<Double-Button-1>", self._on_double_click)
 
     # ── Drag ──────────────────────────────────────────────────────────────────
 
@@ -112,11 +112,14 @@ class MiniOverlay(tk.Toplevel):
         x = event.x_root - self._drag_x
         y = event.y_root - self._drag_y
         self.geometry(f"+{x}+{y}")
-
     def _on_click(self, event):
+        # Single click — only expand if it wasn't a drag
         if (abs(event.x_root - self.winfo_x() - self._drag_x) < 5 and
                 abs(event.y_root - self.winfo_y() - self._drag_y) < 5):
-            self._on_expand()
+            pass   # single click does nothing now
+
+    def _on_double_click(self, event):
+     self._on_expand()
 
     # ── Public update API ─────────────────────────────────────────────────────
 

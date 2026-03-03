@@ -89,4 +89,4 @@ WINDOW_SIZE  = "1140x780"
 # ── Mini mode ─────────────────────────────────────────────────────────────────
 # Set to true to launch in compact overlay mode by default
 MINI_MODE_DEFAULT = os.environ.get("MINI_MODE_DEFAULT", "false").lower() == "true"
-MINI_WINDOW_SIZE  = "260x160"   # compact overlay dimensions
+MINI_WINDOW_SIZE  = "180x110"   # compact overlay dimensions
