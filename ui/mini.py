@@ -31,6 +31,7 @@ class MiniOverlay(tk.Toplevel):
         self.title("Tidepool Mini")
         self.protocol("WM_DELETE_WINDOW", self._on_close)
         self.resizable(False, False)
+        self.attributes("-topmost", True)
         self.geometry(f"{w}x{h}+{self.winfo_screenwidth() - w - 24}+{self.winfo_screenheight() - h - 60}")
 
         try:
@@ -40,6 +41,8 @@ class MiniOverlay(tk.Toplevel):
 
         self._build()
         self._bind_drag()
+        self.update()
+        self.overrideredirect(True)  
 
     def _on_close(self):
         sys.exit(0)
